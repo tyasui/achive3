@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Achieve</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+  <header>
+    <ul>
+      <li><%= link_to "Achieve3", contributions_path %></li>
+      <li><%= link_to "トップページ", contributions_path %></li>
+      <li><%= link_to "ツイート", contributions_path %></li>
+    </ul>
+    <BR>
+    <img src="<%= asset_path "images.png" %>">
+  </header>
+
+  <section class="main-header">
+  </section>
+
+  <%= yield %>
+
+  <footer>
+    <p>運営会社DIVE INTO CODE株式会社</p>
+    <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+  </footer>
+
+</body>
+
+</html>

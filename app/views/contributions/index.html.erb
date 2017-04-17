@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+      <%= link_to "ツイートする", new_contribution_path, class: 'btn btn-default' %>
+      <BR><BR>
+      <h1>ツイートした一覧</h1>
+    <% @contributions.each do |contribution| %>
+    <div class="row">
+      <p><img src="<%= asset_path "twitter.png" %>"height="50" width="50">
+      <%= contribution.content %></p>
+      <p><%= contribution.created_at %></p>
+      <%= link_to "編集", edit_contribution_path(contribution.id), class: 'btn btn-default btn-sm btn-success' %>
+      <%= link_to "削除", contribution_path(contribution.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="b_page-top-btn" class="b_page-top-btn">
+    <p><a class="b_move-page-top" id="b_move-page-top">▲</a></p>
+</div>
