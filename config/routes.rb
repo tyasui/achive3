@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
 
-  resources :contributions,only: [:index, :new, :create, :edit, :update, :destroy]do
+  devise_for :users
 
+  resources :contributions,only: [:index, :new, :create, :edit, :update, :destroy]do
     collection do
       post :confirm
     end
-
   end
+
+if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+end
   
 
   #get 'contributions' => 'contributions#index'
@@ -17,7 +21,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'contributions#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

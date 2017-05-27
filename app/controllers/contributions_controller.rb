@@ -1,5 +1,6 @@
 class ContributionsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_contribution, only: [:edit, :update, :destroy]
   
   def index
@@ -16,6 +17,7 @@ class ContributionsController < ApplicationController
 
   def create
     @contribution = Contribution.create(contributions_params)
+    @contribution.user_id = current_user.id
     if @contribution.save
       redirect_to contributions_path, notice: "ツイートの投稿をしました！"
     else
@@ -23,6 +25,7 @@ class ContributionsController < ApplicationController
     end
   end
   
+
   def edit
     @contribution = Contribution.find(params[:id])
   end
