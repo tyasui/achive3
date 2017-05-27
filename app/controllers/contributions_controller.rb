@@ -54,7 +54,7 @@ class ContributionsController < ApplicationController
   private
 
   def contributions_params
-      params.require(:contribution).permit(:content)
+      params.require(:contribution).permit(:content, :picture, :picture_cache, :remove_picture)
   end
   
   def set_contribution

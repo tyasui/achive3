@@ -10,6 +10,29 @@
     </ul>
   </div>
 <% end %>
+
+  <!-- 追加個所 -->
+  <div class="field">
+    <% if @contribution.picture? %>
+      <div class="thumbnail">
+      <%= image_tag @contribution.picture.url %>
+    </div>
+  <% end %><br>
+    <%= f.label :picture %><br>
+    <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @contribution.persisted? && @contribution.picture? %>
+      <label>
+      <%= f.check_box :remove_picture %>
+      画像を削除
+    </label>
+  <% end %>
+  </div>
+  <!-- 追加個所終了 -->
+
 <%= f.label :ツイート内容 %>
 <%= f.text_field :content, class: 'form-control' %>
 <br>

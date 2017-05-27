@@ -10,11 +10,12 @@
       <h1>ツイートした一覧</h1>
     <% @contributions.each do |contribution| %>
     <div class="row">
-      <p><img src="<%= asset_path "twitter.png" %>"height="50" width="50">
+      <p><img src="<%= asset_path "instagram.jpg" %>"height="50" width="50">
       <P><%= image_tag(contribution.user.image_url) %></P>
       <P><%= contribution.user.name %></P>
       <P><%= contribution.user.email %></P>
-      <%= contribution.content %></p>
+      <P><%= image_tag(contribution.picture) %></P>
+      <P><%= contribution.content %></p>
       <p><%= contribution.created_at %></p>
       <%= link_to "編集", edit_contribution_path(contribution.id), class: 'btn btn-default btn-sm btn-success' %>
       <%= link_to "削除", contribution_path(contribution.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
