@@ -1,0 +1,12 @@
+<h1>Achieve3に新しく投稿されました！</h1>
+
+<p>content: <%= @contribution.content %></p>
+<p>created_at: <%= @contribution.created_at %></p>
+<p>user.name: <%= @contribution.user.name %></p>
+<p>contribution.user.email: <%= @contribution.user.email %></p>
+
+
+
+<p>
+  <%= link_to '投稿された投稿はこちら', contributions_url %>
+</p>
