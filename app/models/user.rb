@@ -26,9 +26,8 @@ class User < ActiveRecord::Base
     user
   end
   
-    def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
+  def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
-
     unless user
       user = User.new(
           name:     auth.info.nickname,

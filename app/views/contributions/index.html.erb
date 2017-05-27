@@ -11,6 +11,7 @@
     <% @contributions.each do |contribution| %>
     <div class="row">
       <p><img src="<%= asset_path "twitter.png" %>"height="50" width="50">
+      <P><%= image_tag(contribution.user.image_url) %></P>
       <P><%= contribution.user.name %></P>
       <P><%= contribution.user.email %></P>
       <%= contribution.content %></p>
