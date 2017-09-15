@@ -26,7 +26,7 @@ class ContributionsController < ApplicationController
     @contribution = Contribution.create(contributions_params)
     @contribution.user_id = current_user.id
     if @contribution.save
-      redirect_to contributions_path, notice: "ツイートの投稿をしました！"
+      redirect_to contributions_path, notice: "投稿しました！"
       NoticeMailer.sendmail_contribution(@contribution).deliver
     else
       render 'new'
