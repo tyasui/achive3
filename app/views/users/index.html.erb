@@ -2,10 +2,11 @@
   <h2>ユーザー一覧</h2>
 
   <% @users.each do |user| %>
-      <%= profile_img(user) %>
+      <%= profile_img(user) %><br>
       <%= link_to user.name, user %>
       <% if user.id != current_user.id %>
         <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
       <% end %>
+      <br><br>
   <% end %>
 </div>
