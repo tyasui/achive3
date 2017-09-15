@@ -43,10 +43,10 @@ header ul:after {
 }
 
 .main-header {
-  padding-bottom: 10%;
+  padding-bottom: 1%;
   width: 100%;
   background-size: cover;
-#  background-image: url("images.png");
+  background-image: url("header.png");
   background-attachment: fixed;
 }
 

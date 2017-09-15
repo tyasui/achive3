@@ -5,27 +5,24 @@
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
-      <%= link_to "topicを書き込む", new_contribution_path, class: 'btn btn-default' %>
-      <BR><BR>
-      <h1>topic一覧</h1>
+    <%= link_to "今なにしてる？", new_contribution_path, class: 'btn btn-default' %>
+    <BR><BR>
+
     <% @contributions.each do |contribution| %>
-    <div class="row">
-      
+      <div class="row">
+        <P><%= image_tag(contribution.user.image_url) %>
+        <%= contribution.user.name %>さん　　
+        <%= contribution.created_at.strftime("%y/%m/%d %p %l:%M") %></P>
 
-      <P><%= image_tag(contribution.user.image_url) %></P>
-      <P><%= contribution.user.name %></P>
-      <P><%= contribution.user.email %></P>
-      <P><%= image_tag(contribution.picture) %></P>
-      
+        <%= link_to contribution_path(contribution) do %>
+          <h2><strong><%= contribution.content %></strong></h2>
+        <% end %>
 
-    <%= link_to contribution_path(contribution) do %>
-    <h2><strong><%= contribution.content %></strong></h2>
-    <% end %>
-      
-      <p><%= contribution.created_at %></p>
-      <%= link_to "編集", edit_contribution_path(contribution.id), class: 'btn btn-default btn-sm btn-success' %>
-      <%= link_to "削除", contribution_path(contribution.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
-    </div>
+        <P><%= image_tag(contribution.picture) %></P>
+
+        <%= link_to "編集", edit_contribution_path(contribution.id), class: 'btn btn-default btn-sm btn-success' %>
+        <%= link_to "削除", contribution_path(contribution.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+      </div>
     <% end %>
   </div>
 </div>

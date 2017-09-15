@@ -15,7 +15,7 @@
     <ul>
       <li><%= link_to "Achieve3", contributions_path %></li>
       <li><%= link_to "トップページ", contributions_path %></li>
-      <li><%= link_to "topic", contributions_path %></li>
+      <li><%= link_to "投稿一覧", contributions_path %></li>
       <% if user_signed_in? %>
         <li><%= link_to 'マイページ', edit_user_registration_path %></li>
         <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
@@ -24,19 +24,19 @@
         <li><%= link_to 'ログイン', new_user_session_path  %></li>
         <li><%= link_to 'サインアップ', new_user_registration_path %></li>
       <% end %>
-
     </ul>
     <BR>
   </header>
 
   <section class="main-header">
+    <img src="assets/facebook.png">
   </section>
 
   <%= yield %>
 
   <footer>
     <p>運営会社DIVE INTO CODE株式会社</p>
-    <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+    <p>© 2015-2017 Copyright DIVE INTO CODE Corp.</p>
   </footer>
 
 </body>
