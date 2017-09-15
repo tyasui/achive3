@@ -1,11 +1,18 @@
 class ContributionsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_contribution, only: [:edit, :update, :destroy]
+  before_action :set_contribution, only: [:show, :edit, :update, :destroy]
   
   def index
     @contributions=Contribution.all
   end
+  
+  # showアククションを定義します。入力フォームと一覧を表示するためインスタンスを2つ生成します。
+  def show
+    @comment = @contribution.comments.build
+    @comments = @contribution.comments
+  end
+  
   
   def new
     if params[:back]
@@ -50,8 +57,9 @@ class ContributionsController < ApplicationController
     @contribution = Contribution.new(contributions_params)
     render :new if @contribution.invalid?
   end
+
   
-  private
+private
 
   def contributions_params
       params.require(:contribution).permit(:content, :picture, :picture_cache, :remove_picture)

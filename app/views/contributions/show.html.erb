@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<div class="child row">
+  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class="contribution-text">
+      <p class="left"><strong>topic内容</strong></p>
+      <B><h2><p class="left"><%= @contribution.content %></p></h2></B>
+
+      <% if current_user.id == @contribution.user_id %>
+      <%= link_to 'topicの編集', edit_contribution_path(@contribution) %> |
+    <% end %>
+    <%= link_to 'topic一覧に戻る', contributions_path %>
+
+      <p class="right">
+        <strong>作成時間:</strong></left>
+        <%= @contribution.created_at.strftime("%y/%m/%d %p %l:%M") %>
+      </p>
+    </div>
+    <h1><p>　　</p></h1>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, contribution: @contribution } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, contribution: @contribution } %>
+  </div>
+</div>

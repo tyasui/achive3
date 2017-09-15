@@ -5,17 +5,23 @@
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
-      <%= link_to "ツイートする", new_contribution_path, class: 'btn btn-default' %>
+      <%= link_to "topicを書き込む", new_contribution_path, class: 'btn btn-default' %>
       <BR><BR>
-      <h1>ツイートした一覧</h1>
+      <h1>topic一覧</h1>
     <% @contributions.each do |contribution| %>
     <div class="row">
-      <p><img src="<%= asset_path "instagram.jpg" %>"height="50" width="50">
+      
+
       <P><%= image_tag(contribution.user.image_url) %></P>
       <P><%= contribution.user.name %></P>
       <P><%= contribution.user.email %></P>
       <P><%= image_tag(contribution.picture) %></P>
-      <P><%= contribution.content %></p>
+      
+
+    <%= link_to contribution_path(contribution) do %>
+    <h2><strong><%= contribution.content %></strong></h2>
+    <% end %>
+      
       <p><%= contribution.created_at %></p>
       <%= link_to "編集", edit_contribution_path(contribution.id), class: 'btn btn-default btn-sm btn-success' %>
       <%= link_to "削除", contribution_path(contribution.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>

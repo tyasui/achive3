@@ -1,14 +1,14 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
-    <h3>以下の内容で、ツイートする。</h3>
+    <h3>以下の内容で、topicを書き込む。</h3>
     
     <%= form_for(@contribution) do |f| %>
       <%= f.hidden_field :content %>
       <%= f.hidden_field :picture %>
       <%= f.hidden_field :picture_cache %>
-      <p>ツイート内容:<%= @contribution.content %></p>
+      <p>topic内容:<%= @contribution.content %></p>
       <p>画像内容:<%= image_tag @contribution.picture %></p>
-      <%= f.submit "ツイートする",class: 'btn btn-primary btn-block' %>
+      <%= f.submit "topicを書き込む",class: 'btn btn-primary btn-block' %>
     <% end %>
     
     <%= form_for(@contribution, url: new_contribution_path, method: 'get') do |f| %>

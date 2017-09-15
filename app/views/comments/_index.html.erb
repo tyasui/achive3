@@ -1,0 +1,17 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% unless comment.id.nil? %>
+      <li>
+        <p class="left"><%= comment.user.name %>さんがコメントしました。</p>
+        <h2><p class="left"><%= comment.content %></p></h2>
+        <p class="left"><%= comment.created_at %></p>
+        <% if current_user.id == comment.user.id %>
+          <p class="right">
+            <%= link_to '', edit_contribution_comment_path(contribution, comment), class: "fa fa-pencil-square-o fa-lg" %>
+            <%= link_to '', contribution_comment_path(contribution, comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
+          </p>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

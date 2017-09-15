@@ -15,9 +15,10 @@
     <ul>
       <li><%= link_to "Achieve3", contributions_path %></li>
       <li><%= link_to "トップページ", contributions_path %></li>
-      <li><%= link_to "ツイート", contributions_path %></li>
+      <li><%= link_to "topic", contributions_path %></li>
       <% if user_signed_in? %>
         <li><%= link_to 'マイページ', edit_user_registration_path %></li>
+        <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path  %></li>
@@ -26,7 +27,6 @@
 
     </ul>
     <BR>
-    <img src="<%= asset_path "images.jpg" %>">
   </header>
 
   <section class="main-header">

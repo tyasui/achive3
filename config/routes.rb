@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, controllers: {
@@ -8,15 +12,18 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  resources :contributions,only: [:index, :new, :create, :edit, :update, :destroy]do
-    collection do
-      post :confirm
-    end
+  resources :users, only: [:index]
+  
+  resources :relationships, only: [:create, :destroy]
+
+  resources :contributions do
+    resources :comments
+    post :confirm, on: :collection
   end
 
-if Rails.env.development?
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
-end
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
   
 
   #get 'contributions' => 'contributions#index'
