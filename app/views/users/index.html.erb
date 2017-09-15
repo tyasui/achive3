@@ -1,12 +1,20 @@
 <div class="container">
-  <h2>ユーザー一覧</h2>
 
   <% @users.each do |user| %>
-      <%= profile_img(user) %><br>
-      <%= link_to user.name, user %>
+      <% if user.id == current_user.id %>
+        <%= profile_img(user) %><br>
+        <%= link_to user.name, user %>
+    <% end %>
+  <% end %>
+  <br>  <br>
+<h2>ともだちかも？</h2>
+  <br>
+    <% @users.each do |user| %>
       <% if user.id != current_user.id %>
+        <%= profile_img(user) %><br>
+        <%= link_to user.name, user %>
         <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
-      <% end %>
-      <br><br>
+    <br><br>
+    <% end %>
   <% end %>
 </div>
