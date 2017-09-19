@@ -3,6 +3,8 @@
   <% @users.each do |user| %>
       <% if user.id == current_user.id %>
         <%= profile_img(user) %><br>
+        <%= user.name %><br>
+        <%= user.email %><br>
         <%= link_to user.name, user %>
     <% end %>
   <% end %>
