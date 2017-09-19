@@ -69,3 +69,4 @@ gem 'rmagick'
 
 gem 'faker'
 
+gem 'fog'
