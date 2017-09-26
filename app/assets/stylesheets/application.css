@@ -45,7 +45,7 @@ header ul:after {
 .main-header {
   padding-bottom: 1%;
   width: 100%;
-
+  background-image: image-url("facebook.png");
   background-size: cover;
   background-attachment: fixed;
 }
